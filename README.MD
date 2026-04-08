@@ -1,3 +1,3 @@
 ### AngularJS Sandbox
 
-This repo have been created to learn AngularJS
+This repo had been created to learn AngularJS
