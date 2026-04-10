@@ -24,7 +24,7 @@ app.controller("firstController", [ '$scope', ($scope) => {
 	directives = [
 		{ name: "ng-app", description: "app module tells Angular to bootstrap the application" },
 		{ name: "ng-Init", description: "initializes the Angular application, and evaluates the expression" },
-		{ name: "ng-repeat", description: "repeats HTML elements for each item in a collection" },
+		{ name: "ng-repeat", description: "repeats HTML elements for each item in a collection, syntax: 'name in names' and then use the variable name to access the item" },
 		{ name: "ng-model", description: "binds the value of HTML controls to application data. Like text inputs" },
 	];
 	// $scope.directives = directives;

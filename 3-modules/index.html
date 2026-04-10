@@ -16,7 +16,11 @@
   <!-- the controller is applicaple for scope of the ol -->
   <ol style="width:fit-content" ng-controller="firstController">
     <!-- this repeats the list items (directives) -->
-    <li ng-repeat="directive in directives" style="margin: 5px; padding: 2px;">
+     <!-- we can filter the list items using the filter directive -->
+    <input type="text" placeholder="Filter directives" ng-model="search">
+     <!-- we can also order the list items using the orderBy directive -->
+     <!-- we can also use the color variable to change the color of the directive name -->
+    <li ng-repeat="directive in directives | filter:search | orderBy:'description'" style="margin: 5px; padding: 2px;">
       <span class="{{color}}">{{directive.name}}</span> {{directive.description}}
     </li>
     <li>name: {{name}} </li>
