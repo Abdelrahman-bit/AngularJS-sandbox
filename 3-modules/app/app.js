@@ -30,6 +30,8 @@ app.controller("firstController", [ '$scope', ($scope) => {
 		{ name: "ng-show", description: "shows or hides an HTML element based on a condition" },
 		{ name: "ng-hide", description: "shows or hides an HTML element based on a condition" },
 		{ name: "ng-click", description: "binds a click event to an HTML element" },
+		{ name: "ng-submit", description: "binds a submit event to an HTML form" },
+		{ name: "ng-src", description: "binds the src attribute of an HTML element to a variable, preventing hydration errors on the browser" },
 	];
 
 	
