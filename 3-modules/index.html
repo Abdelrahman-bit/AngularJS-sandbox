@@ -9,7 +9,8 @@
 </head>
 
 <body ng-Init="color='blue'">
-  <h1>Directives</h1>
+  <header ng-include="'header.html'"></header>
+
   <input type="text" placeholder="Enter your name" ng-model="name">
   <p>Hello {{name}} </p>
 
@@ -25,6 +26,17 @@
     </li>
     <li>name: {{name}} </li>
   </ol>
+
+  <div ng-controller="secondController" style="width:fit-content; margin-top: 20px;">
+    <input type="text" ng-model="searchItem" placeholder="Search for an item" style="margin-left:2em; width:200px; padding: 5px; border-radius: 6px;">
+    <button ng-click="visible = false">hide out of stock</button>
+    <button ng-click="visible = true">show all</button>
+    <ul>
+      <li ng-repeat="item in grocery | filter:searchItem" ng-show="visible? true: item.inStock" style="margin: 5px; padding: 2px; display: flex; justify-content: space-between; width: 400px;">
+        {{item.name}}  <span>${{item.price | currency}} </span> <span>({{item.quantity}} in stock)</span> <span class="remove" ng-click="removeItem(item)">X</span>
+      </li>
+    </ul>
+  </div>
 
 </body>
 
