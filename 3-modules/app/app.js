@@ -57,8 +57,22 @@ app.controller("secondController", [ '$scope', ($scope)=> {
 		}
 	}
 
+	const addItem = ()=>{
+		if(!$scope.newItem.name || !$scope.newItem.price || !$scope.newItem.quantity){
+			return alert("Please fill all the fields");
+		}
+		grocery.push({
+			name: $scope.newItem.name,
+			price: parseFloat($scope.newItem.price),
+			quantity: $scope.newItem.quantity,
+			inStock: $scope.newItem.quantity > 0,
+		});
+		$scope.newItem = {};
+	}
+
 	Object.assign($scope, {
 		grocery,
 		removeItem,
+		addItem,
 	});
 }])
