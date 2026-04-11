@@ -1,0 +1,28 @@
+<h1>Grocery List</h1>
+<div style="width:fit-content; margin-top: 20px;  ">
+
+    <form ng-submit="addItem()"
+        style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; width: 400px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; margin-left: 18px;">
+        <input type="text" ng-model="newItem.name" placeholder="Item name"
+            style="margin-right: 1em; padding: 5px; border-radius: 6px; width: 100%;">
+        <input type="text" ng-model="newItem.price" placeholder="Item price"
+            style="margin-right: 1em; padding: 5px; border-radius: 6px; width: 100%;">
+        <input type="text" ng-model="newItem.quantity" placeholder="Item quantity"
+            style="margin-right: 1em; padding: 5px; border-radius: 6px; width: 100%;">
+        <input type="submit" value="Add Item"
+            style="margin-left: 1em; padding: 5px; border-radius: 6px; margin-top: 8px;">
+    </form>
+
+    <input type="text" ng-model="searchItem" placeholder="Search for an item"
+        style="margin-left:2em; width:200px; padding: 5px; border-radius: 6px;">
+    <button ng-click="visible = true">show all</button>
+    <button ng-click="visible = false">hide out of stock</button>
+
+    <ul>
+        <li ng-repeat="item in grocery | filter:searchItem" ng-show="visible? true: item.inStock"
+            style="margin: 5px; padding: 2px; display: flex; justify-content: space-between; width: 400px;">
+            {{item.name}} <span>{{item.price | currency}} </span> <span>({{item.quantity}} in stock)</span> <span
+                class="remove" ng-click="removeItem(item)">X</span>
+        </li>
+    </ul>
+</div>
