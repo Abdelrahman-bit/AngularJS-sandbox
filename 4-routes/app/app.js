@@ -31,31 +31,33 @@ app.run(function () {
 	console.log(Date.now() - time);
 });
 
-app.controller("firstController", [ '$scope', function($scope){
+app.controller("firstController", [ '$scope', '$http', function($scope, $http){
 	// a controller is a function that fire when the controller is loaded, so we can use it to set up some stuff when the controller is ready
 	// thing like setting up some variables, or even setting up some third party libraries
-	const directives = [
-		{ name: "ng-app", description: "app module tells Angular to bootstrap the application" },
-		{ name: "ng-Init", description: "initializes the Angular application, and evaluates the expression" },
-		{ name: "ng-repeat", description: "repeats HTML elements for each item in a collection, syntax: 'name in names' and then use the variable name to access the item" },
-		{ name: "ng-model", description: "binds the value of HTML controls to application data. Like text inputs" },
-		{ name: "ng-include", description: "includes an external HTML file into the current HTML file" },
-		{ name: "ng-show", description: "shows or hides an HTML element based on a condition" },
-		{ name: "ng-hide", description: "shows or hides an HTML element based on a condition" },
-		{ name: "ng-click", description: "binds a click event to an HTML element" },
-		{ name: "ng-submit", description: "binds a submit event to an HTML form" },
-		{ name: "ng-src", description: "binds the src attribute of an HTML element to a variable, preventing hydration errors on the browser" },
-		{ name: "ng-href", description: "binds the href attribute of an HTML element to a variable, preventing hydration errors on the browser" },
-		{ name: "ng-route", description: "used to define routes in the application, in the module dependancy array" },
-	];
+	
+	// const directives = [
+	// 	{ name: "ng-app", description: "app module tells Angular to bootstrap the application" },
+	// 	{ name: "ng-Init", description: "initializes the Angular application, and evaluates the expression" },
+	// 	{ name: "ng-repeat", description: "repeats HTML elements for each item in a collection, syntax: 'name in names' and then use the variable name to access the item" },
+	// 	{ name: "ng-model", description: "binds the value of HTML controls to application data. Like text inputs" },
+	// 	{ name: "ng-include", description: "includes an external HTML file into the current HTML file" },
+	// 	{ name: "ng-show", description: "shows or hides an HTML element based on a condition" },
+	// 	{ name: "ng-hide", description: "shows or hides an HTML element based on a condition" },
+	// 	{ name: "ng-click", description: "binds a click event to an HTML element" },
+	// 	{ name: "ng-submit", description: "binds a submit event to an HTML form" },
+	// 	{ name: "ng-src", description: "binds the src attribute of an HTML element to a variable, preventing hydration errors on the browser" },
+	// 	{ name: "ng-href", description: "binds the href attribute of an HTML element to a variable, preventing hydration errors on the browser" },
+	// 	{ name: "ng-route", description: "used to define routes in the application, in the module dependancy array" },
+	// ];
 
-	console.log(angular.toJson(directives))
-	console.log(JSON.stringify(directives))
+	
 	
 	// $scope.directives = directives;
 	// $scope.name = "John Doe";
+	$http.get('data/data.json').then((response)=>{
+		$scope.directives = response.data;
+	})
 	Object.assign($scope, {
-		directives,
 		name: "John Doe",
 	});
 }]);
